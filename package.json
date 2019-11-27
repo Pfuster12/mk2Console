@@ -2,7 +2,7 @@
   "name": "mk2console",
   "version": "1.0.0",
   "description": "A trusty console embedded in-window to print rich log messages during development.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Pfuster12/mk2Console"

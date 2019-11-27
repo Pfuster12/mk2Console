@@ -2,7 +2,7 @@ const path = require('path');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/Mk2ConsoleViewer.tsx',
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, 'lib'),
