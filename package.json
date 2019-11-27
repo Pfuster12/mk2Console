@@ -1,0 +1,45 @@
+{
+  "name": "mk2console",
+  "version": "1.0.0",
+  "description": "A trusty console embedded in-window to print rich log messages during development.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pfuster12/mk2Console"
+  },
+  "homepage": "https://github.com/Pfuster12/mk2Console",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "keywords": [
+    "console",
+    "react",
+    "component",
+    "development"
+  ],
+  "author": "Pfuster12",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typescript": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.5",
+    "css-loader": "^3.2.0",
+    "file-loader": "^5.0.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  }
+}

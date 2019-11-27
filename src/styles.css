@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'ubuntu-mono';
+    src: url(./assets/ubuntu-mono-regular.ttf);
+}
+
+.mk2console::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mk2console::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.1);
+} 
+
+.mk2console::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,.2);
+}
+
+.mk2console-flex-row {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.mk2console-pt-1 {
+    padding-top: 0.5rem;
+}
+
+.mk2console {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: black;
+    width: 380px;
+    height: 400px;
+    font-family: 'Consolas',monospace !important;
+    z-index: 1000;
+    padding: 0rem 0.5rem 0rem 1rem;
+    margin-right: 16px;
+    resize: horizontal;
+    overflow: auto;
+}
+
+.mk2console-stream-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.mk2console-stream {
+    font-family: 'ubuntu-mono','Consolas',monospace !important;
+    color: white;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.mk2console-stream-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mk2console-stream-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.1);
+} 
+
+.mk2console-stream-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,.2);
+}
+
+.mk2console-input-block {
+    display: flex;
+    flex: 1;
+    white-space: pre-wrap;
+    height: 100%;
+}
+
+.mk2console-input {
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    flex: 1;
+    resize: none;
+    height: 100%;
+    white-space: pre-wrap;
+}
+
+.mk2console-close {
+    cursor: pointer;
+}
+
+.mk2console-title {
+    flex-grow: 1;
+    color: white;
+    font-family: 'ubuntu-mono','Consolas',monospace !important;
+}
