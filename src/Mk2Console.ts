@@ -13,7 +13,7 @@ export const Mk2Console = {
         const stream = document.querySelector('.mk2console-stream')
         const span = document.createElement('span')
         span.className = 'mk2console-stream'
-        span.innerHTML = '> ' 
+        span.innerHTML = '>&nbsp;' 
             + '<span class="mk2console-stream" style="color:' 
             + color 
             + ';font-weight:'

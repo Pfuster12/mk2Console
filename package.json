@@ -1,6 +1,6 @@
 {
   "name": "mk2console",
-  "version": "1.0.0",
+  "version": "0.1.15",
   "description": "A trusty console embedded in-window to print rich log messages during development.",
   "main": "lib/index.js",
   "repository": {
@@ -21,12 +21,12 @@
   ],
   "author": "Pfuster12",
   "license": "MIT",
-  "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "typescript": "^3.7.2"
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
+    "typescript": "^3.7.2",
     "@types/node": "^12.12.14",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",

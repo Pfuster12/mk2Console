@@ -1,18 +1,13 @@
-@font-face {
-    font-family: 'ubuntu-mono';
-    src: url(./assets/ubuntu-mono-regular.ttf);
-}
-
 .mk2console::-webkit-scrollbar {
     width: 4px;
 }
 
 .mk2console::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,.1);
+    background-color: rgba(255,255,255,.2);
 } 
 
 .mk2console::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,255,255,.2);
+      background: rgba(255,255,255,.3);
 }
 
 .mk2console-flex-row {
@@ -25,7 +20,8 @@
 }
 
 .mk2console-pt-1 {
-    padding-top: 0.5rem;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .mk2console {
@@ -37,7 +33,7 @@
     background-color: black;
     width: 380px;
     height: 400px;
-    font-family: 'Consolas',monospace !important;
+    font-family: monospace !important;
     z-index: 1000;
     padding: 0rem 0.5rem 0rem 1rem;
     margin-right: 16px;
@@ -52,10 +48,11 @@
 }
 
 .mk2console-stream {
-    font-family: 'ubuntu-mono','Consolas',monospace !important;
+    font-family: monospace !important;
     color: white;
     white-space: pre-wrap;
     overflow-wrap: break-word;
+    font-size: 16px;
 }
 
 .mk2console-stream-container::-webkit-scrollbar {
@@ -75,6 +72,8 @@
     flex: 1;
     white-space: pre-wrap;
     height: 100%;
+    color: white;
+    font-size: 16px;
 }
 
 .mk2console-input {
@@ -84,15 +83,21 @@
     flex: 1;
     resize: none;
     height: 100%;
+    color: white;
+    border: none;
     white-space: pre-wrap;
+    padding: 0px 0px 0px 1px;
 }
 
 .mk2console-close {
     cursor: pointer;
+    color: white;
+    font-size: 14px;
 }
 
 .mk2console-title {
     flex-grow: 1;
     color: white;
-    font-family: 'ubuntu-mono','Consolas',monospace !important;
+    font-size: 14px;
+    font-family: monospace !important;
 }

@@ -30,7 +30,8 @@ module.exports = {
             {
                 enforce: "pre",
                 test: /\.js$/,
-                loader: "source-map-loader"
+                loader: "source-map-loader",
+                "exclude": /node_modules/
             },
             {
                 test: /\.css$/,
@@ -46,5 +47,9 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    externals: {
+        'react': 'react', // Case matters here 
+        'react-dom' : 'reactDOM' // Case matters here 
+       }
 };
