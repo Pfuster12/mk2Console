@@ -1,7 +1,7 @@
 /**
  * Mk2 Console library.
  */
-export const Mk2Console = {
+const Mk2Console = {
 
     /**
      * Prints a message to the console text stream.
@@ -36,3 +36,5 @@ export const Mk2Console = {
         stream.innerHTML = ''
     }
 }
+
+module.exports.Mk2Console = Mk2Console
