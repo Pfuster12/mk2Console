@@ -88,9 +88,9 @@ export default function App() {
 ## Supported Props
 
 
-| Prop              | Type           | required  |
-| ------------------|:-------------:| ---------:|
-| **removeStartUp** | boolean       | false     |
+| Prop              | Type           | description                       | default   | required  |
+| ------------------|:--------------:| ---------------------------------:|----------:|----------:|
+| **removeStartUp** | boolean        | Removes the startup log messages. | false     | false     |
 
 The interface used:
 
