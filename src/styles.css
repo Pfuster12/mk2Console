@@ -55,6 +55,10 @@
     font-size: 16px;
 }
 
+.mk2console-link {
+    text-decoration: underline;
+}
+
 .mk2console-stream-container::-webkit-scrollbar {
     width: 4px;
 }

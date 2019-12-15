@@ -103,7 +103,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
             Mk2Console.log('Welcome to the Mk-II Console!', '#5cc7e2')
             Mk2Console.log('It\'s a trusty window console for all your logging needs!', 'yellow')
             Mk2Console.log('And it supports rich formatting.', '#3dda82', 'bold')
-            Mk2Console.log('Go to github.com/Pfuster12/mk2Console for more...', 'yellow')
+            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...', 'yellow')
             Mk2Console.log('Check out its command input. Write anything to print out or write "clear" to clear all the messages. More command support to come!')
         }
     },
@@ -117,7 +117,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
             </div>
             <div className="mk2console-stream-container">
                 <span className="mk2console-stream"></span>
-                <span className="mk2console-input-block">>&nbsp;&nbsp;
+                <span className="mk2console-stream mk2console-input-block">>&nbsp;
                     <textarea value={input}
                         onChange={onInputChange}
                         onKeyDown={onKeyPress}
