@@ -37,4 +37,4 @@ const Mk2Console = {
     }
 }
 
-module.exports.Mk2Console = Mk2Console
+export default Mk2Console

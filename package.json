@@ -1,6 +1,6 @@
 {
   "name": "mk2console",
-  "version": "0.1.15",
+  "version": "0.1.20",
   "description": "A trusty console embedded in-window to print rich log messages during development.",
   "main": "lib/index.js",
   "repository": {

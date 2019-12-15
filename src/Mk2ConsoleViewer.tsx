@@ -2,7 +2,7 @@ import * as React from 'react'
 import './styles.css'
 import { useState, useEffect } from 'react'
 import { KeyCodes } from './KeyCodes'
-const Mk2Console = require('./Mk2Console')
+import Mk2Console from './Mk2Console'
 import { Mk2Commands } from './Mk2Commands'
 
 interface Mk2ConsoleViewerProps {
@@ -117,7 +117,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
             </div>
             <div className="mk2console-stream-container">
                 <span className="mk2console-stream"></span>
-                <span className="mk2console-input-block">>&nbsp;
+                <span className="mk2console-input-block">>&nbsp;&nbsp;
                     <textarea value={input}
                         onChange={onInputChange}
                         onKeyDown={onKeyPress}
