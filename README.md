@@ -9,14 +9,14 @@ Close at any time, no questions asked.
 
 Mk2Console is a [npm package](https://www.npmjs.com/package/mk2console).
 
-```
+```console
 npm i mk2console
 ```
 
 ## How it works
 Mk2Console consists of React component viewer and a simple object with helper functions. Import the component and the Helper function object in order to display and log messages in your code.
 
-```
+```jsx
 import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
 
 export default function App() {
@@ -38,7 +38,7 @@ export default function App() {
 
 The helper object contains the log function:
 
-```
+```typescript
 log: (msg: string, color: string = 'white', fontWeight: string = 'normal') => {}
 ```
 
@@ -46,7 +46,7 @@ This is where the console is able to format its messages. The color and fontWeig
 
 So if we modify our initial call with some CSS properties:
 
-```
+```jsx
 import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
 
 export default function App() {
@@ -66,14 +66,46 @@ export default function App() {
 
 We get the start up log message:
 
-![Default Theme](https://raw.githubusercontent.com/Pfuster12/mk2console/github-assets/defaul-theme-mk2console.png)
+![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/default-theme-mk2console.PNG)
+
+## Startup
+
+The `Mk2ConsoleViewer` comes packaged with a startup log message. If you wish to remove them simply pass true to the `removeStartUp` prop:
+
+```jsx
+import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
+
+export default function App() {
+
+    return (
+        <div>
+            <Mk2ConsoleViewer removeStartUp={true}/>
+        </div>
+    )
+}
+```
+
+## Supported Props
+
+
+| Prop              | Type           | required  |
+| ------------------|:-------------:| ---------:|
+| **removeStartUp** | boolean       | false     |
+
+The interface used:
+
+```typescript
+interface Mk2ConsoleViewerProps {
+    removeStartUp?: boolean
+}
+```
 
 ## Themes
 The mk2Consoles duty is to bring you beautiful and rich theming for all your logging needs.
 
 Keep it simple with the clean, classic default theme or choose from plugin themes. Or create your own!
 
-![Default Theme](https://raw.githubusercontent.com/Pfuster12/mk2console/github-assets/defaul-theme-mk2console.png)
+![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/default-theme-mk2console.PNG)
 
 ## Development
 
