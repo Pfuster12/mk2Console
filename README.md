@@ -1,6 +1,8 @@
 # Welcome to the Mark-II Console
 ![npm](https://img.shields.io/npm/v/mk2console) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/website-screen.PNG | width=400)
+
 The Mark-II Console is a small console viewport that sits in the corner of your window. Print out your log messages during development with rich formatting and colour, so you don't need to open the hefty developer tools if all you need is to log some stuff out!
 
 Close at any time, no questions asked.
