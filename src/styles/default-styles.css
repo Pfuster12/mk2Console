@@ -1,0 +1,140 @@
+.mk2console::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mk2console::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.2);
+} 
+
+.mk2console::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,.3);
+}
+
+.mk2console-flex-row {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.mk2console-pt-1 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.mk2console {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: black;
+    width: 380px;
+    height: 400px;
+    font-family: monospace !important;
+    z-index: 1000;
+    padding: 0rem 0.5rem 0rem 1rem;
+    margin-right: 16px;
+    resize: horizontal;
+    overflow: auto;
+}
+
+.mk2console-stream-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.mk2console-stream {
+    font-family: monospace !important;
+    color: white;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.mk2console-link {
+    text-decoration: underline;
+}
+
+.mk2console-stream-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mk2console-stream-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,.1);
+} 
+
+.mk2console-stream-container::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,.2);
+}
+
+.mk2console-input-block {
+    display: flex;
+    flex: 1;
+    white-space: pre-wrap;
+    height: 100%;
+    color: white;
+    font-size: 16px;
+}
+
+.mk2console-input {
+    background-color: transparent;
+    outline: none;
+    display: flex;
+    flex: 1;
+    resize: none;
+    height: 100%;
+    color: white;
+    border: none;
+    white-space: pre-wrap;
+    padding: 0px 0px 0px 1px;
+    font-size: 16px;
+}
+
+.mk2console-close {
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.mk2console-title {
+    flex-grow: 1;
+    color: white;
+    font-size: 14px;
+    font-family: monospace !important;
+}
+
+.mk2console-theme-title {
+    color: white;
+    font-size: 14px;
+    font-family: monospace !important;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-right: 16px;
+}
+
+.mk2console-themes-dialog {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 32px;
+    right: 24px;
+    padding: 12px 0px;
+    overflow: auto;
+    border: solid 1px white;
+    background-color: black;
+    max-height: 200px;
+}
+
+.mk2console-theme {
+    cursor: pointer;
+    padding: 4px 12px;
+}
+
+.mk2console-theme:hover {
+    background-color: blue;
+}

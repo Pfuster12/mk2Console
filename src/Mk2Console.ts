@@ -9,7 +9,7 @@ const Mk2Console = {
      * @param color Text color, defaults to CSS color code white.
      * @param fontWeight Font weight property, default to normal.
      */
-    log: (msg: string, color: string = 'white', fontWeight: string = 'normal') => {
+    log: (msg: string, color: string = '', fontWeight: string = 'normal') => {
         const stream = document.querySelector('.mk2console-stream')
         const span = document.createElement('span')
         span.className = 'mk2console-stream'

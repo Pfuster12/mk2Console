@@ -1,9 +1,9 @@
 import * as React from 'react'
-import './styles.css'
 import { useState, useEffect } from 'react'
 import { KeyCodes } from './KeyCodes'
 import Mk2Console from './Mk2Console'
 import { Mk2Commands } from './Mk2Commands'
+import ThemesDialog from './components/ThemesDialog'
 
 interface Mk2ConsoleViewerProps {
     removeStartUp?: boolean
@@ -17,6 +17,10 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     const [input, setInput] = useState('')
     const [commandHistory, setCommandHistory] = useState<string[]>([])
     const [commandHistoryCounter, setCommandHistoryCounter] = useState(0)
+    const [showThemes, setShowThemes] = useState(false)
+    const [theme, setTheme] = useState('default')
+    const [stylePath, setStylePath] = useState('default-styles.css')
+    const themes = ['default', 'light', 'darcula']
 
     /**
      * Flush stream of text.
@@ -40,6 +44,9 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         setInput(event.currentTarget.value)
     }
 
+    /**
+     * Handle on key press.
+     */
     function onKeyPress(event: React.KeyboardEvent) {
         const str = input.trim()
         
@@ -98,6 +105,9 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         console.remove()
     }
 
+    /**
+     * Start up log message.
+     */
     useEffect(() => {
         if (!props.removeStartUp) {
             Mk2Console.log('Welcome to the Mk-II Console!', '#5cc7e2')
@@ -109,10 +119,36 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     },
     [])
 
+    /**
+     * Run effect on theme change to change the stylesheet.
+     */
+    useEffect(() => {
+        setStylePath(theme + '-styles.css') 
+    },
+    [theme])
+
+    /**
+     * Handle theme click.
+     */
+    function handleThemeClick() {
+        setShowThemes(!showThemes)
+    }
+
+    /**
+     * Handle theme click.
+     */
+    function onThemeClick(theme: string) {
+        setTheme(theme)
+        setShowThemes(false)
+    }
+
     return (
-        <div className="mk2console">
+        <>
+         <link rel="stylesheet" type="text/css" href={stylePath} />
+         <div className="mk2console">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
                 <span className="mk2console-title">Mk-II Console</span>
+                <span onClick={handleThemeClick} className="mk2console-theme-title">themes ▾</span>
                 <span className="mk2console-close flex-row items-center"onClick={onClose}>[x]</span>
             </div>
             <div className="mk2console-stream-container">
@@ -124,6 +160,12 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
                         className="mk2console-input mk2console-stream"/>
                 </span>
             </div>
+            {
+                showThemes
+                &&
+                <ThemesDialog onThemeClick={onThemeClick} themes={themes}/>
+            }
         </div>
+        </>
     )
 }

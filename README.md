@@ -16,7 +16,7 @@ npm i mk2console
 ```
 
 ## How it works
-Mk2Console consists of React component viewer and a simple object with helper functions. Import the component and the Helper function object in order to display and log messages in your code.
+Mk2Console consists of React component viewer and a simple object with helper functions. Import the component and the Helper function object in order to display and log messages in your code. The viewer works best when you place in your app's root view:
 
 ```jsx
 import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
@@ -29,9 +29,14 @@ export default function App() {
     [])
 
     return (
-        <div>
+        <main>
+            <div>
+                <>
+                {/* Your other components...*/}
+                </>
+            </div>
             <Mk2ConsoleViewer/>
-        </div>
+        </main>
     )
 }
 ```

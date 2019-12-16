@@ -10,7 +10,7 @@
   "homepage": "https://github.com/Pfuster12/mk2Console",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --open --config webpack.test.js",
     "build": "webpack --config webpack.prod.js"
   },
   "keywords": [
@@ -21,7 +21,7 @@
   ],
   "author": "Pfuster12",
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
@@ -31,6 +31,7 @@
     "@types/react-dom": "^16.9.4",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.5",
+    "html-webpack-plugin": "^3.2.0",
     "css-loader": "^3.2.0",
     "cz-conventional-changelog": "^3.0.2",
     "file-loader": "^5.0.2",
