@@ -11,7 +11,7 @@ interface ThemesDialogProps {
 export default function ThemesDialog(props: ThemesDialogProps) {
 
     function handleClick(event: React.SyntheticEvent) {
-        const theme = (event.currentTarget as HTMLSpanElement).dataset.theme
+        const theme = (event.currentTarget as HTMLSpanElement).dataset.themetag
         props.onThemeClick(theme)
     }
 
@@ -19,7 +19,7 @@ export default function ThemesDialog(props: ThemesDialogProps) {
         <div className="mk2console-themes-dialog">
             {
                 props.themes.map(theme => {
-                    return <span data-theme={theme} onClick={handleClick} 
+                    return <span data-themetag={theme} onClick={handleClick} 
                         className="mk2console-theme mk2console-stream">{theme}</span>
                 })
             }

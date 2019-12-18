@@ -41,7 +41,7 @@ export default function App() {
 }
 ```
 
-> NOTE Mk2Console uses the new React Hooks.
+> **NOTE** Mk2ConsoleViewer uses the new React Hooks.
 
 The helper object contains the log function:
 
@@ -75,6 +75,17 @@ We get the start up log message:
 
 ![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/default-theme-mk2console.PNG)
 
+### Highlight Color
+
+`highlight` is a special keyword in the Mk2Console. Every theme will have a highlight color defined for your convenience that you can use to quickly format log messages to stand out.
+If you pass `highlight` to the color property in the log method:
+
+```
+Mk2Console.log('This log is highlighted', 'highlight')
+```
+
+The message will understand and use the theme's `highlight` color.
+
 ## Startup
 
 The `Mk2ConsoleViewer` comes packaged with a startup log message. If you wish to remove them simply pass true to the `removeStartUp` prop:
@@ -94,7 +105,6 @@ export default function App() {
 
 ## Supported Props
 
-
 | Prop              | Type           | description                       | default   | required  |
 | ------------------|:--------------:| ---------------------------------:|----------:|----------:|
 | **removeStartUp** | boolean        | Removes the startup log messages. | false     | false     |
@@ -110,9 +120,26 @@ interface Mk2ConsoleViewerProps {
 ## Themes
 The mk2Consoles duty is to bring you beautiful and rich theming for all your logging needs.
 
-Keep it simple with the clean, classic default theme or choose from plugin themes. Or create your own!
+Keep it simple with the clean, classic default theme or choose from plugin themes. Or create your own! (TBA)
 
+The package comes with a few pre-loaded themes:
+
+Default
+--------
 ![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/default-theme-mk2console.PNG)
+
+Light
+--------
+![Light Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/light-theme-mk2console.PNG)
+
+Dracula
+--------
+![Dracula Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/dracula-theme-mk2console.PNG)
+
+### How to change themes
+
+Themese are instantly switchable in the Theme Dialog picker embedded in the Viewer window.
+![Theme dialog](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/theme-dialog-mk2console.PNG)
 
 ## Development
 

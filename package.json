@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/Pfuster12/mk2Console",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\"",
     "start": "webpack-dev-server --open --config webpack.test.js",
     "build": "webpack --config webpack.prod.js"
   },

@@ -22,8 +22,7 @@ module.exports = {
             filename: "./index.html"
         }),
         new CopyWebpackPlugin([
-            {from: './src/styles/default-styles.css'},
-            {from: './src/styles/light-styles.css'}
+            {from: './src/styles/default-styles.css'}
         ])
     ],
     resolve: {

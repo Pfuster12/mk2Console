@@ -4,6 +4,7 @@ import { KeyCodes } from './KeyCodes'
 import Mk2Console from './Mk2Console'
 import { Mk2Commands } from './Mk2Commands'
 import ThemesDialog from './components/ThemesDialog'
+import './styles/default-styles.css'
 
 interface Mk2ConsoleViewerProps {
     removeStartUp?: boolean
@@ -19,8 +20,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     const [commandHistoryCounter, setCommandHistoryCounter] = useState(0)
     const [showThemes, setShowThemes] = useState(false)
     const [theme, setTheme] = useState('default')
-    const [stylePath, setStylePath] = useState('default-styles.css')
-    const themes = ['default', 'light', 'darcula']
+    const themes = ['default', 'light', 'dracula']
 
     /**
      * Flush stream of text.
@@ -81,7 +81,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         if (event.keyCode == KeyCodes.KEY_UP_ARROW) {
             event.preventDefault()
             if (commandHistoryCounter < commandHistory.length) {
-                const command = commandHistory[commandHistoryCounter + 1]
+                const command = commandHistory[commandHistoryCounter]
                 setInput(command)
                 setCommandHistoryCounter(commandHistoryCounter + 1)    
             }
@@ -90,7 +90,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         if (event.keyCode == KeyCodes.KEY_DOWN_ARROW) {
             event.preventDefault()
             if (commandHistoryCounter > 0) {
-                const command = commandHistory[commandHistoryCounter - 1]
+                const command = commandHistory[commandHistoryCounter]
                 setInput(command)
                 setCommandHistoryCounter(commandHistoryCounter - 1)
             }
@@ -111,9 +111,9 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     useEffect(() => {
         if (!props.removeStartUp) {
             Mk2Console.log('Welcome to the Mk-II Console!', '#5cc7e2')
-            Mk2Console.log('It\'s a trusty window console for all your logging needs!', 'yellow')
+            Mk2Console.log('It\'s a trusty window console for all your logging needs!', 'highlight')
             Mk2Console.log('And it supports rich formatting.', '#3dda82', 'bold')
-            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...', 'yellow')
+            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...', 'highlight')
             Mk2Console.log('Check out its command input. Write anything to print out or write "clear" to clear all the messages. More command support to come!')
         }
     },
@@ -123,7 +123,8 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
      * Run effect on theme change to change the stylesheet.
      */
     useEffect(() => {
-        setStylePath(theme + '-styles.css') 
+        const mainElement = document.getElementById('mk2console')
+        mainElement.setAttribute('data-theme', theme);
     },
     [theme])
 
@@ -144,8 +145,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
 
     return (
         <>
-         <link rel="stylesheet" type="text/css" href={stylePath} />
-         <div className="mk2console">
+         <div id="mk2console" data-theme="default">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
                 <span className="mk2console-title">Mk-II Console</span>
                 <span onClick={handleThemeClick} className="mk2console-theme-title">themes ▾</span>

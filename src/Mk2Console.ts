@@ -25,7 +25,7 @@ const Mk2Console = {
                 const linkString = '<a class="mk2console-stream mk2console-link"' +
                 'href="http://'+ link.value + '"'
                 + ' style="color:' 
-                + color 
+                + (color === 'highlight' ? 'var(--highlight)' : color)
                 + ';font-weight:'
                 + fontWeight
                 + ';"' 
@@ -36,7 +36,7 @@ const Mk2Console = {
 
         span.innerHTML = '>&nbsp;' 
             + '<span class="mk2console-stream" style="color:' 
-            + color 
+            + (color === 'highlight' ? 'var(--highlight)' : color)
             + ';font-weight:'
             + fontWeight
             + ';"'
