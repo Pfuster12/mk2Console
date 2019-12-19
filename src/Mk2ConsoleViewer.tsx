@@ -109,8 +109,8 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     /**
      * Handle on close click.
      */
-    function onClose(event: React.SyntheticEvent) {
-        const console = document.querySelector('.mk2console')
+    function onClose() {
+        const console = document.querySelector('#mk2console')
         console.remove()
     }
 

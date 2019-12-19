@@ -8,17 +8,23 @@
     --debug: yellow;
     --warn: plum;
     --error: red;
+    --scrollbar_thumb: rgba(255,255,255,.2);
+    --scrollbar_thumb_hover: rgba(255,255,255,.3);
+    --border-color: black;
 }
 
 [data-theme="light"] {
     --default-color: black;
-    --bg-color: ghostwhite;
+    --bg-color: white;
     --hover-color: lightgrey;
     --highlight: darkorange;
     --info: black;
     --debug: darkorange;
     --warn: darkorchid;
     --error: red;
+    --scrollbar_thumb: rgba(255,255,255,.2);
+    --scrollbar_thumb_hover: rgba(255,255,255,.3);
+    --border-color: black;
 }
 
 [data-theme="dracula"] {
@@ -30,6 +36,9 @@
     --debug: yellow;
     --warn: #ff79c6;
     --error: red;
+    --scrollbar_thumb: rgba(255,255,255,.2);
+    --scrollbar_thumb_hover: rgba(255,255,255,.3);
+    --border-color: #282a36;
 }
 
 #mk2console::-webkit-scrollbar {
@@ -37,11 +46,11 @@
 }
 
 #mk2console::-webkit-scrollbar-thumb {
-    background-color: rgba(255,255,255,.2);
+    background-color: var(--scrollbar_thumb);
 } 
 
 #mk2console::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,255,255,.3);
+      background: var(--scrollbar_thumb_hover);
 }
 
 .mk2console-flex-row {
@@ -73,6 +82,9 @@
     margin-right: 16px;
     resize: horizontal;
     overflow: auto;
+    border-left: solid 1px;
+    border-top: solid 1px;
+    border-right: solid 1px;
 }
 
 .mk2console-stream-container {
