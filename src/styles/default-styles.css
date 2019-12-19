@@ -13,7 +13,7 @@
 [data-theme="light"] {
     --default-color: black;
     --bg-color: ghostwhite;
-    --hover-color: grey;
+    --hover-color: lightgrey;
     --highlight: darkorange;
     --info: black;
     --debug: darkorange;
