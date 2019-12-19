@@ -4,13 +4,21 @@
     --bg-color: black;
     --hover-color: blue;
     --highlight: yellow;
+    --info: white;
+    --debug: yellow;
+    --warn: plum;
+    --error: red;
 }
 
 [data-theme="light"] {
     --default-color: black;
     --bg-color: ghostwhite;
     --hover-color: grey;
-    --highlight: orange;
+    --highlight: darkorange;
+    --info: black;
+    --debug: darkorange;
+    --warn: darkorchid;
+    --error: red;
 }
 
 [data-theme="dracula"] {
@@ -18,6 +26,10 @@
     --bg-color: #282a36;
     --hover-color: #44475a;
     --highlight: #ff79c6;
+    --info: #f8f8f2;
+    --debug: yellow;
+    --warn: #ff79c6;
+    --error: red;
 }
 
 #mk2console::-webkit-scrollbar {

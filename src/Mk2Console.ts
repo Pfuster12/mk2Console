@@ -10,7 +10,54 @@ const Mk2Console = {
      * @param fontWeight Font weight property, default to normal.
      */
     log: (msg: string, color: string = '', fontWeight: string = 'normal') => {
+        log(msg, color, fontWeight)
+    },
+
+    /**
+     * Info message format.
+     */
+    info: (msg: string) => {
+       log(msg, 'var(--info)')
+    },
+
+    /**
+     * Debug message format.
+     */
+    debug: (msg: string) => {
+        log(msg, 'var(--debug)')
+    },
+
+    /**
+     * Warn message format.
+     */
+    warn: (msg: string) => {
+        log(msg, 'var(--warn)')
+    },
+
+    /**
+     * Error message format.
+     */
+    error: (msg: string) => {
+       log(msg, 'var(--error)')
+    },
+
+    /**
+     * Flush text stream.
+     */
+    flush: () => {
         const stream = document.querySelector('.mk2console-stream')
+        stream.innerHTML = ''
+    }
+}
+
+/**
+ * Log a message.
+ * @param msg 
+ * @param color 
+ * @param fontWeight 
+ */
+function log(msg: string, color: string = '', fontWeight: string = 'normal') {
+    const stream = document.querySelector('.mk2console-stream')
         const span = document.createElement('span')
         span.className = 'mk2console-stream'
 
@@ -47,15 +94,6 @@ const Mk2Console = {
 
         // append new span line to stream.
         stream.appendChild(span)
-    },
-
-    /**
-     * Flush text stream.
-     */
-    flush: () => {
-        const stream = document.querySelector('.mk2console-stream')
-        stream.innerHTML = ''
-    }
 }
 
 /**
