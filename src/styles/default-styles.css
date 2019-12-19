@@ -113,7 +113,7 @@
     color: var(--default-color);
     border: none;
     white-space: pre-wrap;
-    padding: 0px 0px 0px 1px;
+    padding: 0px 0px 0px 0px;
     font-size: 16px;
 }
 

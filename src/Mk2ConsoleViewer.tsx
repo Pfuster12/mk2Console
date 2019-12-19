@@ -17,7 +17,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
 
     const [input, setInput] = useState('')
     const [commandHistory, setCommandHistory] = useState<string[]>([])
-    const [commandHistoryCounter, setCommandHistoryCounter] = useState(0)
+    const [commandHistoryCounter, setCommandHistoryCounter] = useState(-1)
     const [showThemes, setShowThemes] = useState(false)
     const [theme, setTheme] = useState('default')
     const themes = ['default', 'light', 'dracula']
@@ -47,7 +47,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     /**
      * Handle on key press.
      */
-    function onKeyPress(event: React.KeyboardEvent) {
+    function onKeyUp(event: React.KeyboardEvent) {
         const str = input.trim()
         
         if (event.keyCode == KeyCodes.KEY_ENTER) {
@@ -69,6 +69,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
             }
             // clear input
             setInput('')
+            setCommandHistoryCounter(-1)
             return
         }
 
@@ -80,19 +81,27 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
 
         if (event.keyCode == KeyCodes.KEY_UP_ARROW) {
             event.preventDefault()
-            if (commandHistoryCounter < commandHistory.length) {
-                const command = commandHistory[commandHistoryCounter]
-                setInput(command)
-                setCommandHistoryCounter(commandHistoryCounter + 1)    
+            var counter = commandHistoryCounter
+            if (counter >= commandHistory.length - 1) {
+                counter = commandHistory.length - 2
             }
+ 
+            const command = commandHistory[counter + 1]
+            
+            setInput(command)
+            setCommandHistoryCounter(counter + 1)    
         }
 
         if (event.keyCode == KeyCodes.KEY_DOWN_ARROW) {
             event.preventDefault()
-            if (commandHistoryCounter > 0) {
-                const command = commandHistory[commandHistoryCounter]
+            var counter = commandHistoryCounter
+            if (commandHistoryCounter <= -1) {
+                counter = -1
+            }
+            if (counter > 0) {
+                const command = commandHistory[counter - 1]
                 setInput(command)
-                setCommandHistoryCounter(commandHistoryCounter - 1)
+                setCommandHistoryCounter(counter - 1)
             }
         }
     }
@@ -156,7 +165,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
                 <span className="mk2console-stream mk2console-input-block">>&nbsp;
                     <textarea value={input}
                         onChange={onInputChange}
-                        onKeyDown={onKeyPress}
+                        onKeyUp={onKeyUp}
                         className="mk2console-input mk2console-stream"/>
                 </span>
             </div>
