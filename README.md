@@ -86,6 +86,20 @@ Mk2Console.log('This log is highlighted', 'highlight')
 
 The message will understand and use the theme's `highlight` color.
 
+## Supported Logger functions
+
+- Info: Info message with the theme's 'info' color.
+`info: (msg: string)`
+
+- Debug: Debugs a message with the theme's 'debug' color.
+`debug: (msg: string)`
+
+- Warn: Warning message with the theme's 'warn' color.
+`warn: (msg: string)`
+
+- Error: Error message with the theme's 'error' color.
+`error: (msg: string)`
+
 ## Startup
 
 The `Mk2ConsoleViewer` comes packaged with a startup log message. If you wish to remove them simply pass true to the `removeStartUp` prop:
