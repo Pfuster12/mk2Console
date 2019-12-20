@@ -89,16 +89,16 @@ The message will understand and use the theme's `highlight` color.
 ## Supported Logger functions
 
 - Info: Info message with the theme's 'info' color.
-`info: (msg: string)`
+```info: (msg: string)```
 
 - Debug: Debugs a message with the theme's 'debug' color.
-`debug: (msg: string)`
+```debug: (msg: string)```
 
 - Warn: Warning message with the theme's 'warn' color.
-`warn: (msg: string)`
+```warn: (msg: string)```
 
 - Error: Error message with the theme's 'error' color.
-`error: (msg: string)`
+```error: (msg: string)```
 
 ## Startup
 
