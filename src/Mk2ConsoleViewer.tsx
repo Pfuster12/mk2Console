@@ -7,19 +7,20 @@ import ThemesDialog from './components/ThemesDialog'
 import './styles/default-styles.css'
 
 interface Mk2ConsoleViewerProps {
-    removeStartUp?: boolean
+    removeStartUp?: boolean,
+    theme?: string
 }
 
 /**
  * React entrypoint for the pseudo-console viewer to append on top of websites.
  */
-export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { removeStartUp: false }) {
+export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { removeStartUp: false, theme: 'default' }) {
 
     const [input, setInput] = useState('')
     const [commandHistory, setCommandHistory] = useState<string[]>([])
     const [commandHistoryCounter, setCommandHistoryCounter] = useState(-1)
     const [showThemes, setShowThemes] = useState(false)
-    const [theme, setTheme] = useState('default')
+    const [theme, setTheme] = useState(props.theme)
     const themes = ['default', 'light', 'dracula']
 
     /**

@@ -17,7 +17,7 @@ export default function App() {
     return (
         <main>
             Hello World!
-            <Mk2ConsoleViewer/>
+            <Mk2ConsoleViewer theme="dracula"/>
         </main>
     )
 }

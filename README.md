@@ -108,12 +108,14 @@ export default function App() {
 | Prop              | Type           | description                       | default   | required  |
 | ------------------|:--------------:| ---------------------------------:|----------:|----------:|
 | **removeStartUp** | boolean        | Removes the startup log messages. | false     | false     |
+| **theme**         | string         | Theme to use on startup           | 'default' | false     |
 
 The interface used:
 
 ```typescript
 interface Mk2ConsoleViewerProps {
-    removeStartUp?: boolean
+    removeStartUp?: boolean,
+    theme?: string
 }
 ```
 
@@ -138,8 +140,30 @@ Dracula
 
 ### How to change themes
 
-Themese are instantly switchable in the Theme Dialog picker embedded in the Viewer window.
+Pass in the theme prop to make the console use the theme of your choice. The prop default to the 'default' theme:
+
+```jsx
+import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
+
+export default function App() {
+
+    return (
+        <div>
+            <Mk2ConsoleViewer theme="dracula"/>
+        </div>
+    )
+}
+```
+
+Themes are instantly switchable in the Theme Dialog picker embedded in the Viewer window.
 ![Theme dialog](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/theme-dialog-mk2console.PNG)
+
+Built-in Themes
+---------------
+
+- `default`
+- `light`
+- `dracula`
 
 ## Development
 
