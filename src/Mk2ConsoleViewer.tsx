@@ -122,9 +122,9 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     useEffect(() => {
         if (!props.removeStartUp) {
             Mk2Console.log('Welcome to the Mk-II Console!', '#5cc7e2')
-            Mk2Console.log('It\'s a trusty window console for all your logging needs!', 'highlight')
+            Mk2Console.log('It\'s a window console for all your logging needs', 'highlight')
             Mk2Console.log('And it supports rich formatting.', '#3dda82', 'bold')
-            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...', 'highlight')
+            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...')
             Mk2Console.log('Check out its command input. Write anything to print out or write "clear" to clear all the messages. More command support to come!')
         }
     },
@@ -156,9 +156,13 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
 
     return (
         <>
-         <div id="mk2console" data-theme="default">
+        {
+        process.env.NODE_ENV === 'development'
+        &&
+        <>
+        <div id="mk2console" data-theme="default">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
-                <span className="mk2console-title">Mk-II Console ({libPackage.version})</span>
+                <span className="mk2console-title">Mk-II Console v{libPackage.version}</span>
                 <span onClick={handleThemeClick} className="mk2console-theme-title">themes ▾</span>
                 <span className="mk2console-close flex-row items-center"onClick={onClose}>[x]</span>
             </div>
@@ -177,6 +181,8 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
                 <ThemesDialog onThemeClick={onThemeClick} themes={themes}/>
             }
         </div>
+        </>
+        }
         </>
     )
 }

@@ -11,6 +11,12 @@ export default function App() {
         Mk2Console.debug('this is a debug log')
         Mk2Console.warn('this is a warn log')
         Mk2Console.error('this is a error log')
+
+        Mk2Console.log({
+            test: 1,
+            key: "hey",
+            man: new Date()
+        })
     },
     [])
 

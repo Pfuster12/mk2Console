@@ -1,3 +1,5 @@
+import { isObject } from "util"
+
 /**
  * Mk2 Console library.
  */
@@ -9,35 +11,35 @@ const Mk2Console = {
      * @param color Text color, defaults to CSS color code white.
      * @param fontWeight Font weight property, default to normal.
      */
-    log: (msg: string, color: string = '', fontWeight: string = 'normal') => {
+    log: (msg: any, color: string = '', fontWeight: string = 'normal') => {
         log(msg, color, fontWeight)
     },
 
     /**
      * Info message format.
      */
-    info: (msg: string) => {
+    info: (msg: any) => {
        log(msg, 'var(--info)')
     },
 
     /**
      * Debug message format.
      */
-    debug: (msg: string) => {
+    debug: (msg: any) => {
         log(msg, 'var(--debug)')
     },
 
     /**
      * Warn message format.
      */
-    warn: (msg: string) => {
+    warn: (msg: any) => {
         log(msg, 'var(--warn)')
     },
 
     /**
      * Error message format.
      */
-    error: (msg: string) => {
+    error: (msg: any) => {
        log(msg, 'var(--error)')
     },
 
@@ -52,27 +54,37 @@ const Mk2Console = {
 
 /**
  * Log a message.
+ * Supports Objects.
  * @param msg 
  * @param color 
  * @param fontWeight 
  */
-function log(msg: string, color: string = '', fontWeight: string = 'normal') {
+function log(msg: any, color: string = '', fontWeight: string = 'normal') {
     const stream = document.querySelector('.mk2console-stream')
         const span = document.createElement('span')
         span.className = 'mk2console-stream'
 
-        // find any http links,
-        const httpLinks = parseHttpLinks(msg)
+        var data: string
 
-        var formattedMessage = msg
+        if (isObject(msg)) {
+            data = JSON.stringify(msg, null, 2)
+        } else {
+            data = msg.toString()
+        }
+
+        // find any http links,
+        const httpLinks = parseHttpLinks(data)
+
+        var formattedMessage = data
 
         if (httpLinks && httpLinks.length > 0) {
             // format message with link spans,
             httpLinks.forEach(link => {
-                const linkString = '<a class="mk2console-stream mk2console-link"' +
-                'href="http://'+ link.value + '"'
+                const linkString = '<a class="mk2console-stream mk2console-link"' 
+                + 'target="_blank" '
+                + 'href="http://'+ link.value + '"'
                 + ' style="color:' 
-                + (color === 'highlight' ? 'var(--highlight)' : color)
+                + (color === 'highlight' ? 'var(--highlight)' : 'var(--link)')
                 + ';font-weight:'
                 + fontWeight
                 + ';"' 

@@ -134,7 +134,7 @@ interface Mk2ConsoleViewerProps {
 ```
 
 ## Themes
-The mk2Consoles duty is to bring you beautiful and rich theming for all your logging needs.
+The mk2Consoles brings you beautiful and rich theming for all your logging needs.
 
 Keep it simple with the clean, classic default theme or choose from plugin themes. Or create your own! (TBA)
 
@@ -154,7 +154,7 @@ Dracula
 
 ### How to change themes
 
-Pass in the theme prop to make the console use the theme of your choice. The prop default to the 'default' theme:
+Pass in the theme prop to make the console use the theme of your choice. The prop defaults to the 'default' theme:
 
 ```jsx
 import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
