@@ -5,6 +5,7 @@ import Mk2Console from './Mk2Console'
 import { Mk2Commands } from './Mk2Commands'
 import ThemesDialog from './components/ThemesDialog'
 import './styles/default-styles.css'
+const libPackage = require('../package.json')
 
 interface Mk2ConsoleViewerProps {
     removeStartUp?: boolean,
@@ -157,7 +158,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         <>
          <div id="mk2console" data-theme="default">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
-                <span className="mk2console-title">Mk-II Console</span>
+                <span className="mk2console-title">Mk-II Console ({libPackage.version})</span>
                 <span onClick={handleThemeClick} className="mk2console-theme-title">themes ▾</span>
                 <span className="mk2console-close flex-row items-center"onClick={onClose}>[x]</span>
             </div>
