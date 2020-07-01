@@ -12,6 +12,11 @@ interface Mk2ConsoleViewerProps {
     theme?: string
 }
 
+enum ViewState {
+    MAXIMISED,
+    MINIMISED
+}
+
 /**
  * React entrypoint for the pseudo-console viewer to append on top of websites.
  */
@@ -109,23 +114,12 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     }
 
     /**
-     * Handle on close click.
-     */
-    function onClose() {
-        const console = document.querySelector('#mk2console')
-        console.remove()
-    }
-
-    /**
      * Start up log message.
      */
     useEffect(() => {
         if (!props.removeStartUp) {
-            Mk2Console.log('Welcome to the Mk-II Console!', '#5cc7e2')
-            Mk2Console.log('It\'s a window console for all your logging needs', 'highlight')
-            Mk2Console.log('And it supports rich formatting.', '#3dda82', 'bold')
-            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more...')
-            Mk2Console.log('Check out its command input. Write anything to print out or write "clear" to clear all the messages. More command support to come!')
+            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more.')
+            Mk2Console.log('Write "clear" to clean the console. More command support to come!')
         }
     },
     [])
@@ -134,8 +128,22 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
      * Run effect on theme change to change the stylesheet.
      */
     useEffect(() => {
-        const mainElement = document.getElementById('mk2console')
-        mainElement.setAttribute('data-theme', theme);
+        const console = document.getElementById('mk2console')
+        // Map the user-facing name to the theme attribute
+        var themeName = "default"
+
+        switch(theme) {
+            case "light":
+                themeName = "mk2light"
+                break;
+            case "dracula":
+                themeName = "mk2dracula"
+                break;
+            default:
+                break;
+        }
+
+        console.setAttribute('data-theme', themeName);
     },
     [theme])
 
@@ -154,21 +162,57 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
         setShowThemes(false)
     }
 
+    /**
+     * Handle minimise/maximise viewport click.
+     */
+    function onViewStateChange() {
+        const console = document.getElementById('mk2console')
+        const state = console.dataset.viewstate
+
+        var height = '280px'
+        switch (parseInt(state)) {
+            case ViewState.MAXIMISED:
+                height = '34px'
+                console.setAttribute('data-viewstate', ViewState.MINIMISED.toString());
+                break;
+            case ViewState.MINIMISED:
+                height = '280px'
+                console.setAttribute('data-viewstate', ViewState.MAXIMISED.toString());
+                break;
+
+        }
+        console.style.height = height
+    }
+
+    /**
+     * Handle on close click.
+     */
+    function onClose() {
+        const console = document.getElementById('mk2console')
+        console.remove()
+    }
+
     return (
         <>
         {
         process.env.NODE_ENV === 'development'
         &&
         <>
-        <div id="mk2console" data-theme="default">
+        <div id="mk2console" 
+            data-viewstate={ViewState.MAXIMISED} 
+            data-theme="default">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
-                <span className="mk2console-title">Mk-II Console v{libPackage.version}</span>
-                <span onClick={handleThemeClick} className="mk2console-theme-title">themes ▾</span>
-                <span className="mk2console-close flex-row items-center"onClick={onClose}>[x]</span>
+                <span className="mk2console-title">Mk-II Console [{libPackage.version}]</span>
+                <span onClick={handleThemeClick} 
+                className="mk2console-theme-title">themes ▾</span>
+                <span className="mk2console-close mk2console-flex-row mk2console-items-center"
+                    onClick={onViewStateChange}>[-]</span>
+                <span className="mk2console-close mk2console-flex-row mk2console-items-center"
+                    onClick={onClose}>[x]</span>
             </div>
             <div className="mk2console-stream-container">
                 <span className="mk2console-stream"></span>
-                <span className="mk2console-stream mk2console-input-block">>&nbsp;
+                <span className="mk2console-stream mk2console-input-block">&gt;&nbsp;
                     <textarea value={input}
                         onChange={onInputChange}
                         onKeyUp={onKeyUp}
@@ -178,7 +222,9 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
             {
                 showThemes
                 &&
-                <ThemesDialog onThemeClick={onThemeClick} themes={themes}/>
+                <ThemesDialog 
+                onThemeClick={onThemeClick} 
+                themes={themes}/>
             }
         </div>
         </>

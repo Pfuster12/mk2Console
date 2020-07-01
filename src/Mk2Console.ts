@@ -65,8 +65,10 @@ function log(msg: any, color: string = '', fontWeight: string = 'normal') {
         span.className = 'mk2console-stream'
 
         var data: string
+        var isAnObject = false
 
         if (isObject(msg)) {
+            isAnObject = true
             data = JSON.stringify(msg, null, 2)
         } else {
             data = msg.toString()
@@ -75,10 +77,11 @@ function log(msg: any, color: string = '', fontWeight: string = 'normal') {
         // find any http links,
         const httpLinks = parseHttpLinks(data)
 
+        // Format message with theme colors...
         var formattedMessage = data
 
+        // format message with link spans,
         if (httpLinks && httpLinks.length > 0) {
-            // format message with link spans,
             httpLinks.forEach(link => {
                 const linkString = '<a class="mk2console-stream mk2console-link"' 
                 + 'target="_blank" '
@@ -89,16 +92,27 @@ function log(msg: any, color: string = '', fontWeight: string = 'normal') {
                 + fontWeight
                 + ';"' 
                 + '>' + link.value + '</a>'
-                formattedMessage = msg.slice(0, link.startIndex) + linkString + msg.slice(link.startIndex + link.value.length, msg.length)
+
+                formattedMessage = data.slice(0, link.startIndex) 
+                    + linkString 
+                    + data.slice(link.startIndex + link.value.length, data.length)
             });
         }
 
-        span.innerHTML = '>&nbsp;' 
+        const date = new Date()
+        span.innerHTML = (isAnObject ? '' : '>&nbsp;') 
+            + '<span class="mk2console-stream mk2console-timestamp">' 
+            + `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}.${date.getMilliseconds()}`
+            + '</span>'
+            + '&nbsp;'
+            + (isAnObject ? '\n' : '') 
             + '<span class="mk2console-stream" style="color:' 
             + (color === 'highlight' ? 'var(--highlight)' : color)
             + ';font-weight:'
             + fontWeight
-            + ';"'
+            + ';'
+            + (isAnObject ? 'font-size:12px;color:var(--object-color);' : "")
+            + '"'
             + '>'
             + formattedMessage 
             + '</span>'

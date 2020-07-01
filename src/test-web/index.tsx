@@ -17,6 +17,17 @@ export default function App() {
             key: "hey",
             man: new Date()
         })
+
+        Mk2Console.log({
+            test: 1,
+            key: "hey",
+            man: new Date(),
+            test2: {
+                test: 1,
+                key: "hey",
+                man: new Date()
+            }
+        })
     },
     [])
 

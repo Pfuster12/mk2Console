@@ -4,6 +4,7 @@
     --bg-color: black;
     --hover-color: blue;
     --highlight: yellow;
+    --object-color: rgb(36, 163, 85);
     --info: white;
     --debug: yellow;
     --warn: plum;
@@ -14,11 +15,12 @@
     --border-color: black;
 }
 
-[data-theme="light"] {
+[data-theme="mk2light"] {
     --default-color: black;
     --bg-color: white;
     --hover-color: lightgrey;
     --highlight: darkorange;
+    --object-color: darkorange;
     --info: black;
     --debug: darkorange;
     --warn: darkorchid;
@@ -29,11 +31,12 @@
     --border-color: black;
 }
 
-[data-theme="dracula"] {
+[data-theme="mk2dracula"] {
     --default-color: #f8f8f2;
     --bg-color: #282a36;
     --hover-color: #44475a;
     --highlight: #ff79c6;
+    --object-color: #ff79c6;
     --info: #f8f8f2;
     --debug: yellow;
     --warn: #ff79c6;
@@ -61,7 +64,7 @@
     flex: 0 0 auto;
 }
 
-.items-center {
+.mk2console-items-center {
     align-items: center;
 }
 
@@ -77,8 +80,8 @@
     bottom: 0px;
     right: 0px;
     background-color: var(--bg-color);
-    width: 380px;
-    height: 400px;
+    width: 460px;
+    height: 280px;
     font-family: monospace !important;
     z-index: 10000;
     padding: 0rem 0.5rem 0rem 1rem;
@@ -101,8 +104,13 @@
     color: var(--default-color);
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.mk2console-timestamp {
+    font-size: 12px;
+    opacity: 0.8;
 }
 
 .mk2console-link {
