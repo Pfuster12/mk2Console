@@ -15,6 +15,8 @@ Mk2Console is a [npm package](https://www.npmjs.com/package/mk2console).
 npm i mk2console
 ```
 
+> **NOTE** Please use the latest version as versions before 1.3.4 contain major bugs.
+
 ## How it works
 Mk2Console consists of React component viewer and a simple object with helper functions. Import the component and the Helper function object in order to display and log messages in your code. The viewer works best when you place in your app's root view:
 
