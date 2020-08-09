@@ -100,9 +100,31 @@ The message will understand and use the theme's `highlight` color.
 - Error: Error message with the theme's 'error' color.
 ```error: (msg: string)```
 
-## Startup
+## Supported Props
 
-The `Mk2ConsoleViewer` comes packaged with a startup log message. If you wish to remove them simply pass true to the `removeStartUp` prop:
+| Prop              | Type           | description                                         | default   | required  |
+| ------------------|:--------------:| ---------------------------------------------------:|----------:|----------:|
+| **theme**         | string         | Theme to use on startup                             | 'default' | false     |
+| **minimised**     | boolean        | Whether the console starts minimised by default     | 'true'    | false     |
+
+The interface used:
+
+```typescript
+interface Mk2ConsoleViewerProps {
+    theme?: string,
+    minimised?: boolean
+}
+```
+
+> **NOTE** Since v1.3.1 the start up log message has been removed along with the property.
+
+## Maximise/Minimise
+
+Since v1.3.0 the console supports toggling the window into a minimised version to stop it
+from obstructing to much real estate in the website if you don't need it.
+
+In fact the console defaults to a minimised state which you can toggle with the `minimised` prop.
+
 
 ```jsx
 import {Mk2ConsoleViewer, Mk2Console} from 'mk2console'
@@ -111,27 +133,19 @@ export default function App() {
 
     return (
         <div>
-            <Mk2ConsoleViewer removeStartUp={true}/>
+            <Mk2ConsoleViewer minimised={false}/>
         </div>
     )
 }
 ```
 
-## Supported Props
+Minimised:
 
-| Prop              | Type           | description                       | default   | required  |
-| ------------------|:--------------:| ---------------------------------:|----------:|----------:|
-| **removeStartUp** | boolean        | Removes the startup log messages. | false     | false     |
-| **theme**         | string         | Theme to use on startup           | 'default' | false     |
+![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/minimised.PNG)
 
-The interface used:
+Maximised: 
 
-```typescript
-interface Mk2ConsoleViewerProps {
-    removeStartUp?: boolean,
-    theme?: string
-}
-```
+![Default Theme](https://github.com/Pfuster12/mk2Console/blob/master/github-assets/maximised.PNG)
 
 ## Themes
 The mk2Consoles brings you beautiful and rich theming for all your logging needs.

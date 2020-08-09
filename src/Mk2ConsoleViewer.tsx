@@ -8,7 +8,8 @@ import './styles/default-styles.css'
 const libPackage = require('../package.json')
 
 interface Mk2ConsoleViewerProps {
-    theme?: string
+    theme?: string,
+    minimised?: boolean
 }
 
 enum ViewState {
@@ -19,7 +20,9 @@ enum ViewState {
 /**
  * React entrypoint for the pseudo-console viewer to append on top of websites.
  */
-export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { theme: 'default' }) {
+export default function Mk2ConsoleViewer(
+    props: Mk2ConsoleViewerProps = { theme: 'default', minimised: true }
+) {
 
     const [input, setInput] = useState('')
     const [commandHistory, setCommandHistory] = useState<string[]>([])
@@ -193,7 +196,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { theme:
     return (
         
         <div id="mk2console" 
-            data-viewstate={ViewState.MAXIMISED} 
+            data-viewstate={props.minimised ? ViewState.MINIMISED : ViewState.MAXIMISED} 
             data-theme="default">
             <div className="mk2console-flex-row mk2console-pt-1 mk2console-items-center">
                 <span className="mk2console-title">Mk-II Console [{libPackage.version}]</span>
