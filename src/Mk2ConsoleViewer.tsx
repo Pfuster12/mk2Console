@@ -8,7 +8,6 @@ import './styles/default-styles.css'
 const libPackage = require('../package.json')
 
 interface Mk2ConsoleViewerProps {
-    removeStartUp?: boolean,
     theme?: string
 }
 
@@ -20,7 +19,7 @@ enum ViewState {
 /**
  * React entrypoint for the pseudo-console viewer to append on top of websites.
  */
-export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { removeStartUp: false, theme: 'default' }) {
+export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { theme: 'default' }) {
 
     const [input, setInput] = useState('')
     const [commandHistory, setCommandHistory] = useState<string[]>([])
@@ -114,36 +113,30 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     }
 
     /**
-     * Start up log message.
-     */
-    useEffect(() => {
-        if (!props.removeStartUp) {
-            Mk2Console.log('Visit github.com/Pfuster12/mk2Console for more.')
-            Mk2Console.log('Write "clear" to clean the console. More command support to come!')
-        }
-    },
-    [])
-
-    /**
      * Run effect on theme change to change the stylesheet.
      */
     useEffect(() => {
-        const console = document.getElementById('mk2console')
-        // Map the user-facing name to the theme attribute
-        var themeName = "default"
-
-        switch(theme) {
-            case "light":
-                themeName = "mk2light"
-                break;
-            case "dracula":
-                themeName = "mk2dracula"
-                break;
-            default:
-                break;
+        try {
+            const console = document.getElementById('mk2console')
+            // Map the user-facing name to the theme attribute
+            var themeName = "default"
+    
+            switch(theme) {
+                case "light":
+                    themeName = "mk2light"
+                    break;
+                case "dracula":
+                    themeName = "mk2dracula"
+                    break;
+                default:
+                    break;
+            }
+    
+            console.setAttribute('data-theme', themeName);
+        } catch (e) {
+            console.log("Error changing theme.");
+            
         }
-
-        console.setAttribute('data-theme', themeName);
     },
     [theme])
 
@@ -166,22 +159,27 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
      * Handle minimise/maximise viewport click.
      */
     function onViewStateChange() {
-        const console = document.getElementById('mk2console')
-        const state = console.dataset.viewstate
-
-        var height = '280px'
-        switch (parseInt(state)) {
-            case ViewState.MAXIMISED:
-                height = '34px'
-                console.setAttribute('data-viewstate', ViewState.MINIMISED.toString());
-                break;
-            case ViewState.MINIMISED:
-                height = '280px'
-                console.setAttribute('data-viewstate', ViewState.MAXIMISED.toString());
-                break;
-
+        try {
+            const console = document.getElementById('mk2console')
+            const state = console.dataset.viewstate
+    
+            var height = '280px'
+            switch (parseInt(state)) {
+                case ViewState.MAXIMISED:
+                    height = '34px'
+                    console.setAttribute('data-viewstate', ViewState.MINIMISED.toString());
+                    break;
+                case ViewState.MINIMISED:
+                    height = '280px'
+                    console.setAttribute('data-viewstate', ViewState.MAXIMISED.toString());
+                    break;
+    
+            }
+            console.style.height = height
+        } catch (e) {
+            console.log("Error changing view state.");
+            
         }
-        console.style.height = height
     }
 
     /**
@@ -193,11 +191,7 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
     }
 
     return (
-        <>
-        {
-        process.env.NODE_ENV === 'development'
-        &&
-        <>
+        
         <div id="mk2console" 
             data-viewstate={ViewState.MAXIMISED} 
             data-theme="default">
@@ -227,8 +221,5 @@ export default function Mk2ConsoleViewer(props: Mk2ConsoleViewerProps = { remove
                 themes={themes}/>
             }
         </div>
-        </>
-        }
-        </>
     )
 }
